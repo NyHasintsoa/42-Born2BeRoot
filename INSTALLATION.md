@@ -1,10 +1,9 @@
-# SYSTEM INSTALLATION
+# Debian SYSTEM INSTALLATION
 
-## Configuration de VirtualBox
+## VirtualBox Configuration
 **Name :** Born2BeRoot  
 **Folder :** /home/nramaan/sgoinfre/VirtualBox VMs  
 **ISO Image :** /home/nramalan/Downloads/debian-13.3.0-amd64-netinst.iso
-
 
 ## Disk Partition
 ### 1. Initial Disk Setup
@@ -70,20 +69,18 @@ Once the LVs are created, you will return to the main manual partitioning screen
 * **tmp:** Use as `Ext4`, Mount point `/tmp`.
 * **var-log:** Use as `Ext4`, Mount point `/var/log`.
 
----
+## Configurer l'Outil de gestion des paquets
 
-### 4. Why this matches your screenshot
+Sur la question **Fault-il analyser d'autres supports d'installation ?**, il faut toujours dire `Non`
 
-The hierarchy in your `lsblk` output shows the **Physical -> Crypt -> LVM** nesting:
+Sur la question **Fault-il utiliser un miroir sur le reseau ?**, il faut toujours dire `Non`
 
-1. **`sda5`**: The physical partition on the disk.
-2. **`sda5_crypt`**: The LUKS encryption layer.
-3. **`LVMGroup-xxx`**: The logical partitions inside the encrypted "vault."
+Sur la question **Souhaitez-vous participer a l'etude statistique sur l'utilisation des paquets ?**, il faut toujours dire `Non`
 
-### Pro-Tip for the Evaluation
+## Selection des logiciels
 
-The evaluator will ask you why you have a separate partition for `/var/log`.
+Selectionner seulement :
+ - Serveur SSH
+ - Utilitaires usuels du systeme
 
-* **Answer:** "To prevent a sudden surge in log files from filling up the entire system (the root partition), which would crash the OS. By isolating it, only the log partition gets full."
-
-Would you like the specific `sudo` configuration steps for the **Born2beRoot** requirements next?
+Il faut decocher les autres pour ne pas installer l'environnement graphique ou l'environnement de bureau
